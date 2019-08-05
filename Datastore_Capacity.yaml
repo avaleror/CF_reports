@@ -1,0 +1,1207 @@
+---
+- MiqReport:
+    title: Datastore Capacity Trend over the last 6 months
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 110
+    db: VimPerformanceTrend
+    cols: []
+    include: {}
+    col_order: []
+    headers: []
+    conditions: 
+    order: Ascending
+    sortby:
+    - resource_name
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options:
+      :rpt_type: trend
+      :interval: daily
+      :end_offset: 0
+      :start_offset: 1209600
+      :trend_db: StoragePerformance
+      :trend_col: v_derived_storage_used
+      :limit_col: max_derived_storage_total
+      :target_pcts:
+      - 50
+      - 75
+      - 95
+    generate_cols: 
+    generate_rows: 
+    col_formats: []
+    tz: Eastern Time (US & Canada)
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 2
+    user_id: 1
+    menu_name: ACMEDatastore Capacity Trend over 6 mos.
+- MiqReport:
+    title: A Service Test
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: Service
+    cols:
+    - name
+    include:
+      vms:
+        columns:
+        - name
+    col_order:
+    - name
+    - vms.name
+    headers:
+    - Name
+    - VM Name
+    conditions: !ruby/object:MiqExpression
+      exp:
+        "=":
+          field: Service-display
+          value: 'true'
+      context_type: 
+    order: Ascending
+    sortby:
+    - name
+    group: c
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options:
+      name:
+        :break_label: '[" Name"]: '
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+      :summary:
+        :hide_detail_rows: false
+    miq_group_id: 2
+    user_id: 1
+    menu_name: A Service Test
+- MiqReport:
+    title: ALL - Instances Peak CPU and Memory
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: Vm
+    cols:
+    - name
+    - vendor
+    - power_state
+    - created_on
+    - updated_on
+    - ipaddresses
+    - location
+    - max_cpu_usage_rate_average_avg_over_time_period
+    - max_mem_usage_absolute_average_avg_over_time_period
+    - snapshot_size
+    - used_storage_by_state
+    - state_changed_on
+    - used_storage
+    include: {}
+    col_order:
+    - name
+    - vendor
+    - power_state
+    - created_on
+    - updated_on
+    - ipaddresses
+    - location
+    - max_cpu_usage_rate_average_avg_over_time_period
+    - max_mem_usage_absolute_average_avg_over_time_period
+    - snapshot_size
+    - used_storage_by_state
+    - state_changed_on
+    - used_storage
+    headers:
+    - Name
+    - Vendor
+    - Power State
+    - Date Created
+    - Date Updated
+    - IP Addresses
+    - Location
+    - CPU - Peak Usage Rate Avg for Collected Intervals 30 Day Avg (%)
+    - Memory - Peak Usage of Allocated for Collected Intervals 30 Day Avg (%)
+    - Snapshot Size
+    - Currently Used Space
+    - State Changed On
+    - Used Storage
+    conditions: !ruby/object:MiqExpression
+      exp:
+        "=":
+          field: Vm-power_state
+          value: 'on'
+      context_type: 
+    order: Ascending
+    sortby: 
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 2
+    user_id: 1
+    menu_name: ALL - Instances Peak CPU and Memory
+- MiqReport:
+    title: Openstack - Active VMs
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 20
+    db: Vm
+    cols:
+    - name
+    - os_image_name
+    - power_state
+    - platform
+    include:
+      ext_management_system:
+        columns:
+        - name
+        - emstype_description
+    col_order:
+    - name
+    - os_image_name
+    - power_state
+    - platform
+    - ext_management_system.name
+    - ext_management_system.emstype_description
+    headers:
+    - Name
+    - OS Name
+    - Power State
+    - Platform
+    - Cloud/Infrastructure Provider Name
+    - Cloud/Infrastructure Provider Type
+    conditions: !ruby/object:MiqExpression
+      exp:
+        "=":
+          field: Vm-power_state
+          value: 'on'
+      context_type: 
+    order: Ascending
+    sortby: 
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options:
+      name:
+        :break_label: 'Name: '
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 2
+    user_id: 1
+    menu_name: ALL - Active VMs
+- MiqReport:
+    title: All Reconfigure Events
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 130
+    db: EmsEvent
+    cols:
+    - vm_name
+    - timestamp
+    - username
+    - message
+    include: {}
+    col_order:
+    - vm_name
+    - timestamp
+    - username
+    - message
+    headers:
+    - VM Name
+    - Time Stamp
+    - Initiated By
+    - Message
+    conditions: !ruby/object:MiqExpression
+      exp:
+        IS NOT NULL:
+          field: EmsEvent-vm_name
+      context_type: 
+    order: Descending
+    sortby:
+    - vm_name
+    group: c
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options:
+      vm_name:
+        :break_label: 'VM Name: '
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+      :summary:
+        :hide_detail_rows: false
+    miq_group_id: 2
+    user_id: 1
+    menu_name: 2 - Reconfigure Events
+- MiqReport:
+    title: Datastore Report
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: Storage
+    cols:
+    - name
+    - disk_size
+    - free_space
+    - store_type
+    - total_space
+    - uncommitted
+    - v_used_space
+    include: {}
+    col_order:
+    - name
+    - disk_size
+    - free_space
+    - store_type
+    - total_space
+    - uncommitted
+    - v_used_space
+    headers:
+    - Name
+    - Disk Size
+    - Free Space
+    - Store Type
+    - Total Space
+    - Uncommitted
+    - Used Space
+    conditions: 
+    order: Ascending
+    sortby: 
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 2
+    user_id: 1
+    menu_name: 3 - Datastore Report
+- MiqReport:
+    title: Cluster Memory Utilization Trends (last week)
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 80
+    db: VimPerformanceTrend
+    cols: []
+    include: {}
+    col_order: []
+    headers: []
+    conditions: 
+    order: Ascending
+    sortby:
+    - resource_name
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options:
+      :rpt_type: trend
+      :interval: daily
+      :end_offset: 0
+      :start_offset: 604800
+      :trend_db: EmsClusterPerformance
+      :trend_col: derived_memory_used
+      :limit_col: max_derived_memory_available
+      :target_pcts:
+      - 70
+      - 80
+      - 90
+    generate_cols: 
+    generate_rows: 
+    col_formats: []
+    tz: UTC
+    time_profile_id: 10000000000001
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 2
+    user_id: 1
+    menu_name: 2 - Cluster Memory Trends (last week)
+- MiqReport:
+    title: Lifecycle Activity
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 140
+    db: Vm
+    cols:
+    - name
+    - retires_on
+    - v_owning_datacenter
+    - mem_cpu
+    - num_cpu
+    - used_disk_storage
+    include:
+      miq_provision_template:
+        columns:
+        - name
+      evm_owner:
+        columns:
+        - name
+        - email
+      miq_provision:
+        include:
+          miq_request:
+            columns:
+            - requester_name
+            - created_on
+            - v_approved_by
+            - v_approved_by_email
+            - fulfilled_on
+        columns:
+        - description
+        - message
+      managed:
+        columns:
+        - environment
+        - location
+      ext_management_system:
+        columns:
+        - name
+        - hostname
+      ems_cluster:
+        columns:
+        - name
+      host:
+        columns:
+        - name
+      storage:
+        columns:
+        - name
+      operating_system:
+        columns:
+        - product_name
+    col_order:
+    - name
+    - miq_provision_template.name
+    - evm_owner.name
+    - evm_owner.email
+    - miq_request.requester_name
+    - miq_request.created_on
+    - miq_request.v_approved_by
+    - miq_request.v_approved_by_email
+    - miq_request.fulfilled_on
+    - miq_provision.description
+    - miq_provision.message
+    - retires_on
+    - managed.environment
+    - managed.location
+    - ext_management_system.name
+    - ext_management_system.hostname
+    - v_owning_datacenter
+    - ems_cluster.name
+    - host.name
+    - storage.name
+    - operating_system.product_name
+    - mem_cpu
+    - num_cpu
+    - used_disk_storage
+    headers:
+    - VM Name
+    - Source Template
+    - Owner Name
+    - Owner Email
+    - Requester Name
+    - Request Date
+    - Approved By
+    - Approved By Email
+    - Approved Date
+    - Provision Description
+    - Provision Message
+    - Retires On
+    - Environment
+    - Location
+    - Provider
+    - Provider Hostname
+    - Datacenter
+    - Cluster
+    - Host
+    - Datastore
+    - Guest OS
+    - Allocated RAM (MB)
+    - Allocated vCPUs
+    - Total Used Disk Space
+    conditions: !ruby/object:MiqExpression
+      exp:
+        IS NOT EMPTY:
+          field: Vm.miq_provision_template-name
+      context_type: 
+    order: Descending
+    sortby:
+    - miq_request.fulfilled_on
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 2
+    user_id: 1
+    menu_name: 1 - Lifecycle Activity
+- MiqReport:
+    title: Right-Sizing Recommendations
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: Vm
+    cols:
+    - v_owning_cluster
+    - name
+    - num_cpu
+    - conservative_recommended_vcpus
+    - conservative_vcpus_recommended_change
+    - mem_cpu
+    - conservative_recommended_mem
+    - conservative_mem_recommended_change
+    include: {}
+    col_order:
+    - v_owning_cluster
+    - name
+    - num_cpu
+    - conservative_recommended_vcpus
+    - conservative_vcpus_recommended_change
+    - mem_cpu
+    - conservative_recommended_mem
+    - conservative_mem_recommended_change
+    headers:
+    - Parent Cluster
+    - Name
+    - Number of CPUs
+    - CPU - Conservative Recommendation
+    - CPU - Conservative Recommendation Savings
+    - Memory
+    - Memory - Conservative Recommendation
+    - Memory - Conservative Recommendation Savings
+    conditions: !ruby/object:MiqExpression
+      exp:
+        and:
+        - IS NOT EMPTY:
+            field: Vm-v_owning_cluster
+            value: ''
+        - ">":
+            value: '0'
+            field: Vm-conservative_recommended_vcpus
+        - "!=":
+            value: '0'
+            field: Vm-conservative_vcpus_recommended_change
+      context_type: 
+    order: Ascending
+    sortby:
+    - v_owning_cluster
+    - name
+    group: c
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options:
+      v_owning_cluster:
+        :break_label: 'Parent Cluster: '
+      conservative_vcpus_recommended_change:
+        :grouping:
+        - :total
+      conservative_mem_recommended_change:
+        :grouping:
+        - :total
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+      :summary:
+        :hide_detail_rows: false
+    miq_group_id: 2
+    user_id: 1
+    menu_name: 5 - Right-Sizing Recommendations
+- MiqReport:
+    title: VM Performance - daily averages for last week
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 65
+    db: VmPerformance
+    cols:
+    - resource_name
+    - timestamp
+    - derived_cpu_available
+    - cpu_usage_rate_average
+    - cpu_usagemhz_rate_average
+    - derived_memory_available
+    - derived_memory_used
+    - mem_usage_absolute_average
+    - mem_vmmemctl_absolute_average
+    - max_mem_vmmemctl_absolute_average
+    - min_mem_vmmemctl_absolute_average
+    - mem_vmmemctltarget_absolute_average
+    - max_mem_vmmemctltarget_absolute_average
+    - min_mem_vmmemctltarget_absolute_average
+    include:
+      host:
+        columns:
+        - name
+    col_order:
+    - resource_name
+    - host.name
+    - timestamp
+    - derived_cpu_available
+    - cpu_usage_rate_average
+    - cpu_usagemhz_rate_average
+    - derived_memory_available
+    - derived_memory_used
+    - mem_usage_absolute_average
+    - mem_vmmemctl_absolute_average
+    - max_mem_vmmemctl_absolute_average
+    - min_mem_vmmemctl_absolute_average
+    - mem_vmmemctltarget_absolute_average
+    - max_mem_vmmemctltarget_absolute_average
+    - min_mem_vmmemctltarget_absolute_average
+    headers:
+    - Asset Name
+    - Host Name
+    - Activity Sample - Timestamp  (Day/Time)
+    - CPU - Total Available - from VM Analysis (MHz)
+    - CPU - Usage Rate for Collected Intervals (%)
+    - CPU - Usage Rate for Collected Intervals (MHz)
+    - Memory - Allocated (MB)
+    - Memory - Avg Used for Collected Intervals (MB)
+    - Memory - Usage of Total Allocated (%)
+    - Memory - Balloon Average
+    - Memory - Balloon Max Average
+    - Memory - Balloon Min Average
+    - Memory - Balloon Target Average
+    - Memory - Balloon Target Max Average
+    - Memory - Balloon Target Min Average
+    conditions: 
+    order: Ascending
+    sortby:
+    - resource_name
+    - timestamp
+    group: c
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options:
+      :interval: daily
+      :calc_avgs_by: 
+      :end_offset: 0
+      :start_offset: 604800
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: UTC
+    time_profile_id: 360000000000001
+    display_filter: 
+    col_options:
+      resource_name:
+        :break_label: 'Asset Name: '
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+      :summary:
+        :hide_detail_rows: false
+    miq_group_id: 2
+    user_id: 1
+    menu_name: 8 - VM Performance - daily last week
+- MiqReport:
+    title: VM IP Address Report
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: Vm
+    cols:
+    - name
+    - hostnames
+    - ipaddresses
+    include: {}
+    col_order:
+    - name
+    - hostnames
+    - ipaddresses
+    headers:
+    - Name
+    - Host Names
+    - IP Addresses
+    conditions: 
+    order: Ascending
+    sortby: 
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options: {}
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 2
+    user_id: 1
+    menu_name: 6 - VM IP Address Report
+- MiqReport:
+    title: Chargeback - Production VMs Summary for last month
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: ChargebackVm
+    cols:
+    - start_date
+    - display_range
+    - vm_name
+    - cpu_cost
+    - cpu_metric
+    - cpu_used_cost
+    - cpu_used_metric
+    - disk_io_used_cost
+    - disk_io_used_metric
+    - fixed_compute_1_cost
+    - fixed_compute_2_cost
+    - fixed_storage_1_cost
+    - fixed_storage_2_cost
+    - fixed_cost
+    - memory_allocated_cost
+    - memory_allocated_metric
+    - memory_cost
+    - memory_metric
+    - memory_used_cost
+    - memory_used_metric
+    - net_io_used_cost
+    - net_io_used_metric
+    - owner_name
+    - storage_allocated_cost
+    - storage_allocated_metric
+    - storage_cost
+    - storage_metric
+    - storage_used_cost
+    - storage_used_metric
+    - total_cost
+    - cpu_allocated_cost
+    - cpu_allocated_metric
+    include: {}
+    col_order:
+    - display_range
+    - vm_name
+    - cpu_cost
+    - cpu_metric
+    - cpu_used_cost
+    - cpu_used_metric
+    - disk_io_used_cost
+    - disk_io_used_metric
+    - fixed_compute_1_cost
+    - fixed_compute_2_cost
+    - fixed_storage_1_cost
+    - fixed_storage_2_cost
+    - fixed_cost
+    - memory_allocated_cost
+    - memory_allocated_metric
+    - memory_cost
+    - memory_metric
+    - memory_used_cost
+    - memory_used_metric
+    - net_io_used_cost
+    - net_io_used_metric
+    - owner_name
+    - storage_allocated_cost
+    - storage_allocated_metric
+    - storage_cost
+    - storage_metric
+    - storage_used_cost
+    - storage_used_metric
+    - total_cost
+    - cpu_allocated_cost
+    - cpu_allocated_metric
+    headers:
+    - Date Range
+    - VM Name
+    - CPU Total Cost
+    - CPU Total
+    - CPU Used Cost
+    - CPU Used
+    - Disk I/O Used Cost
+    - Disk I/O Used
+    - Fixed Compute Cost 1
+    - Fixed Compute Cost 2
+    - Fixed Storage Cost 1
+    - Fixed Storage Cost 2
+    - Fixed Total Cost
+    - Memory Allocated Cost
+    - Memory Allocated over Time Period
+    - Memory Total Cost
+    - Memory Total
+    - Memory Used Cost
+    - Memory Used
+    - Network I/O Used Cost
+    - Network I/O Used
+    - Owner
+    - Storage Allocated Cost
+    - Storage Allocated
+    - Storage Total Cost
+    - Storage Total
+    - Storage Used Cost
+    - Storage Used
+    - Total Cost
+    - vCPUs Allocated Cost
+    - vCPUs Allocated over Time Period
+    conditions: 
+    order: Ascending
+    sortby:
+    - start_date
+    - vm_name
+    group: y
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options:
+      :rpt_type: ChargebackVm
+      :options:
+        :interval: weekly
+        :interval_size: 4
+        :end_interval_offset: 0
+        :tag: "/managed/environment/prod"
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: Eastern Time (US & Canada)
+    time_profile_id: 
+    display_filter: 
+    col_options:
+      cpu_allocated_cost:
+        :grouping:
+        - :total
+      cpu_allocated_metric:
+        :grouping:
+        - :total
+      cpu_cost:
+        :grouping:
+        - :total
+      cpu_metric:
+        :grouping:
+        - :total
+      cpu_used_cost:
+        :grouping:
+        - :total
+      cpu_used_metric:
+        :grouping:
+        - :total
+      disk_io_cost:
+        :grouping:
+        - :total
+      disk_io_metric:
+        :grouping:
+        - :total
+      disk_io_used_cost:
+        :grouping:
+        - :total
+      disk_io_used_metric:
+        :grouping:
+        - :total
+      fixed_compute_1_cost:
+        :grouping:
+        - :total
+      fixed_compute_2_cost:
+        :grouping:
+        - :total
+      fixed_cost:
+        :grouping:
+        - :total
+      fixed_storage_1_cost:
+        :grouping:
+        - :total
+      fixed_storage_2_cost:
+        :grouping:
+        - :total
+      memory_allocated_cost:
+        :grouping:
+        - :total
+      memory_allocated_metric:
+        :grouping:
+        - :total
+      memory_cost:
+        :grouping:
+        - :total
+      memory_metric:
+        :grouping:
+        - :total
+      memory_used_cost:
+        :grouping:
+        - :total
+      memory_used_metric:
+        :grouping:
+        - :total
+      net_io_cost:
+        :grouping:
+        - :total
+      net_io_metric:
+        :grouping:
+        - :total
+      net_io_used_cost:
+        :grouping:
+        - :total
+      net_io_used_metric:
+        :grouping:
+        - :total
+      storage_allocated_cost:
+        :grouping:
+        - :total
+      storage_allocated_metric:
+        :grouping:
+        - :total
+      storage_cost:
+        :grouping:
+        - :total
+      storage_metric:
+        :grouping:
+        - :total
+      storage_used_cost:
+        :grouping:
+        - :total
+      storage_used_metric:
+        :grouping:
+        - :total
+      total_cost:
+        :grouping:
+        - :total
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+      :summary:
+        :hide_detail_rows: false
+    miq_group_id: 2
+    user_id: 1
+    menu_name: 4 - Chargeback - Production VMs
+- MiqReport:
+    title: '9 - OpenSCAP: Non-Compliant Containers'
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: ContainerImage
+    cols:
+    - name
+    include:
+      containers:
+        columns:
+        - name
+        - state
+      last_compliance:
+        columns:
+        - compliant
+      openscap_result:
+        columns:
+        - created_at
+      openscap_rule_results:
+        columns:
+        - severity
+    col_order:
+    - containers.name
+    - containers.state
+    - name
+    - last_compliance.compliant
+    - openscap_result.created_at
+    - openscap_rule_results.severity
+    headers:
+    - Container Name
+    - Container State
+    - Image Name
+    - OpenSCAP Compliant
+    - OpenSCAP Scan Date
+    - OpenSCAP Severity
+    conditions: !ruby/object:MiqExpression
+      exp:
+        "=":
+          field: ContainerImage.last_compliance-compliant
+          value: 'false'
+      context_type: 
+    order: Ascending
+    sortby: 
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options:
+      last_compliance.compliant:
+        :style:
+        - :class: :miq_rpt_red_bg
+          :operator: "="
+          :value: 'false'
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+      :pivot:
+        :group_cols:
+        - containers.name
+    miq_group_id: 2
+    user_id: 1
+    menu_name: '9 - OpenSCAP: Non-Compliant Containers'

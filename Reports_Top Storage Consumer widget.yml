@@ -1,0 +1,121 @@
+---
+- MiqWidget:
+    guid: d34cf7de-f440-11e6-b954-2cc2605deca5
+    description: Top Storage
+    title: Top Storage
+    content_type: report
+    options:
+      :row_count: 5
+      :col_order:
+      - name
+      - used_disk_storage
+    visibility:
+      :roles:
+      - _ALL_
+    user_id: 
+    resource_id: 99000000000143
+    resource_type: MiqReport
+    enabled: true
+    read_only: false
+    MiqReportContent:
+    - MiqReport:
+        title: Top Storage Consumption
+        rpt_group: Custom
+        rpt_type: Custom
+        priority: 
+        db: Vm
+        cols:
+        - name
+        - used_disk_storage
+        include:
+          storage:
+            columns:
+            - name
+          ext_management_system:
+            columns:
+            - name
+        col_order:
+        - name
+        - used_disk_storage
+        - storage.name
+        - ext_management_system.name
+        headers:
+        - Name
+        - Total Used Disk Space
+        - Datastore Name
+        - Cloud/Infrastructure Provider Name
+        conditions: 
+        order: Descending
+        sortby:
+        - used_disk_storage
+        group: 
+        graph: 
+        dims: 
+        filename: 
+        file_mtime: 
+        categories: []
+        timeline: 
+        template_type: report
+        where_clause: 
+        db_options: {}
+        generate_cols: 
+        generate_rows: 
+        col_formats:
+        - 
+        - 
+        - 
+        - 
+        tz: 
+        time_profile_id: 
+        display_filter: 
+        col_options:
+          used_disk_storage:
+            :style:
+            - :class: :miq_rpt_red_text
+              :operator: ">="
+              :value: '10'
+              :value_suffix: :gigabytes
+        rpt_options:
+          :pdf:
+            :page_size: US-Letter
+          :queue_timeout: 
+        miq_group_id: 99000000000002
+        user_id: 99000000000001
+        menu_name: Top Storage Consumption
+    MiqSchedule:
+      name: Top Storage
+      description: Top Storage
+      sched_action:
+        :method: generate_widget
+      filter: !ruby/object:MiqExpression
+        exp:
+          "=":
+            field: MiqWidget-id
+            value: 99000000000011
+        context_type: 
+        col_details:
+          MiqWidget-id:
+            :data_type: :integer
+            :virtual_reflection: false
+            :virtual_column: false
+            :sql_support: true
+            :excluded_by_preprocess_options: false
+            :tag: false
+            :include: {}
+            :format_sub_type: :integer
+        pexp:
+          "=":
+            field: MiqWidget-id
+            value: 99000000000011
+      towhat: MiqWidget
+      run_at:
+        :start_time: 2017-02-16 23:00:00.000000000 Z
+        :tz: Berlin
+        :interval:
+          :unit: daily
+          :value: 1
+      enabled: true
+      userid: system
+      prod_default: system
+      adhoc: 
+      file_depot_id: 

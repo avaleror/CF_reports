@@ -1,0 +1,103 @@
+---
+- MiqReport:
+    title: Cloud - New VM Capacity (CPU Usage)
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: EmsCluster
+    cols:
+    - name
+    - total_hosts
+    - capacity_profile_2_remaining_vm_count_based_on_vcpu
+    - total_vms
+    - aggregate_vm_cpus
+    - capacity_profile_2_remaining_host_vcpu
+    - capacity_profile_2_available_host_vcpu
+    - capacity_profile_2_vcpu_per_vm
+    - capacity_profile_2_vcpu_per_vm_with_min_max
+    - capacity_profile_2_vcpu_maximum
+    - capacity_profile_2_vcpu_minimum
+    - capacity_profile_2_projected_vm_count_based_on_all
+    - capacity_profile_2_projected_vm_count_based_on_vcpu
+    - capacity_profile_2_vcpu_method
+    - capacity_profile_2_vcpu_commitment_ratio
+    include: {}
+    col_order:
+    - name
+    - total_hosts
+    - capacity_profile_2_remaining_vm_count_based_on_vcpu
+    - total_vms
+    - aggregate_vm_cpus
+    - capacity_profile_2_remaining_host_vcpu
+    - capacity_profile_2_available_host_vcpu
+    - capacity_profile_2_vcpu_per_vm
+    - capacity_profile_2_vcpu_per_vm_with_min_max
+    - capacity_profile_2_vcpu_maximum
+    - capacity_profile_2_vcpu_minimum
+    - capacity_profile_2_projected_vm_count_based_on_all
+    - capacity_profile_2_projected_vm_count_based_on_vcpu
+    - capacity_profile_2_vcpu_method
+    - capacity_profile_2_vcpu_commitment_ratio
+    headers:
+    - Cluster
+    - Total Hosts
+    - Net New VMs
+    - Total Vms
+    - Aggregate Vm Cpus
+    - Capacity - Profile 2 - Available vCPUs for New VMs (Mhz)
+    - Capacity - Profile 2 - CPU Effective with HA (Mhz)
+    - Capacity - Profile 2 - CPU Peak Avg per VM (Mhz)
+    - Capacity - Profile 2 - CPU Peak Avg per VM Used in Calculation (Mhz)
+    - Capacity - Profile 2 - Maximum vCPU per VM (Mhz)
+    - Capacity - Profile 2 - Minimum vCPU per VM (Mhz)
+    - Capacity - Profile 2 - VM Count (combined)
+    - Capacity - Profile 2 - VM Count based on vCPU
+    - Capacity - Profile 2 - vCPU Calculation Method
+    - Capacity - Profile 2 - vCPU Commitment Ratio
+    conditions: 
+    order: Descending
+    sortby: 
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options:
+      capacity_profile_2_remaining_vm_count_based_on_vcpu:
+        :style:
+        - :class: :miq_rpt_red_bg
+          :operator: "<="
+          :value: '0'
+    rpt_options:
+      :pdf:
+        :page_size: US-Letter
+      :queue_timeout: 
+    miq_group_id: 99000000000002
+    user_id: 99000000000001
+    menu_name: Cloud - New VM Capacity (CPU Usage)

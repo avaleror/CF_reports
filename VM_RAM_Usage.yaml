@@ -1,0 +1,101 @@
+---
+- MiqReport:
+    title: Cloud - New VM Capacity (RAM Usage)
+    rpt_group: Custom
+    rpt_type: Custom
+    priority: 
+    db: EmsCluster
+    cols:
+    - name
+    - total_hosts
+    - capacity_profile_2_remaining_vm_count_based_on_memory
+    - total_vms
+    - aggregate_memory
+    - effective_memory
+    - aggregate_vm_memory
+    - v_ram_vr_ratio
+    - capacity_profile_2_memory_per_vm
+    - capacity_profile_2_memory_per_vm_with_min_max
+    - max_mem_usage_absolute_average_high_over_time_period
+    - max_mem_usage_absolute_average_high_over_time_period_without_overhead
+    - capacity_profile_2_remaining_host_memory
+    - capacity_profile_2_memory_commitment_ratio
+    include: {}
+    col_order:
+    - name
+    - total_hosts
+    - capacity_profile_2_remaining_vm_count_based_on_memory
+    - total_vms
+    - aggregate_memory
+    - effective_memory
+    - aggregate_vm_memory
+    - v_ram_vr_ratio
+    - capacity_profile_2_memory_per_vm
+    - capacity_profile_2_memory_per_vm_with_min_max
+    - max_mem_usage_absolute_average_high_over_time_period
+    - max_mem_usage_absolute_average_high_over_time_period_without_overhead
+    - capacity_profile_2_remaining_host_memory
+    - capacity_profile_2_memory_commitment_ratio
+    headers:
+    - Cluster
+    - Total Hosts
+    - Net New VMs
+    - Total Vms
+    - Total Memory
+    - Memory - Effective
+    - Aggregate Vm Memory
+    - Memory Virtual to Real Ratio
+    - Capacity - Profile 2 - Memory per VM
+    - Capacity - Profile 2 - Memory per VM Used in Calculation
+    - Memory - Peak Usage of Allocated for Collected Intervals 30 Day High Avg (%)
+    - Memory - Peak Usage of Allocated for Collected Intervals Without Host Overhead
+      30 Day High Avg (%)
+    - Available Memory for New VMs
+    - Capacity - Profile 2 - Memory Commitment Ratio
+    conditions: 
+    order: Descending
+    sortby:
+    - capacity_profile_2_remaining_vm_count_based_on_memory
+    group: 
+    graph: 
+    dims: 
+    filename: 
+    file_mtime: 
+    categories: []
+    timeline: 
+    template_type: report
+    where_clause: 
+    db_options: {}
+    generate_cols: 
+    generate_rows: 
+    col_formats:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    tz: 
+    time_profile_id: 
+    display_filter: 
+    col_options:
+      capacity_profile_2_remaining_vm_count_based_on_memory:
+        :style:
+        - :class: :miq_rpt_red_bg
+          :operator: "<="
+          :value: '0'
+    rpt_options:
+      :queue_timeout: 
+      :pdf:
+        :page_size: US-Letter
+    miq_group_id: 99000000000002
+    user_id: 99000000000001
+    menu_name: Cloud - New VM Capacity (RAM Usage)
